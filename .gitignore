@@ -1,0 +1,15 @@
+node_modules
+.next
+out
+.env*.local
+.DS_Store
+*.tsbuildinfo
+next-env.d.ts
+
+# Local IDE / scratch
+.idea/
+.vscode/
+
+# Not part of the app source
+_design_source/
+/Company website.zip

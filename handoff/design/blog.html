@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="blog.title">Journal — DogMetrics</title>
+<link rel="icon" href="assets/dogmetrics-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Fraunces:opsz,wght@9..144,300..700&family=Cormorant+Garamond:wght@400;500;600&family=Playfair+Display:wght@400;500;600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/tokens.css">
+<link rel="stylesheet" href="styles/site.css">
+<style>
+  .feature-post { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; padding: 40px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); align-items: center; }
+  @media (max-width: 900px) { .feature-post { grid-template-columns: 1fr; } }
+  .feature-post .tag { margin-bottom: 16px; }
+  .feature-post h2 { font-family: var(--font-display); font-size: clamp(36px, 4vw, 56px); line-height: 1.05; font-weight: 400; margin: 0 0 16px; }
+  .feature-post .excerpt { color: var(--ink-soft); max-width: 52ch; font-size: 17px; margin: 0 0 24px; }
+  .feature-post .meta { font-family: var(--font-mono); font-size: 12px; color: var(--stone); letter-spacing: 0.1em; text-transform: uppercase; }
+  .feature-img { aspect-ratio: 4/3; background: linear-gradient(135deg, var(--tan-pale), var(--tan)); border-radius: 12px; position: relative; overflow: hidden; }
+  .feature-img .pat { position: absolute; inset: 0; background-image: radial-gradient(var(--rust-soft) 1px, transparent 1px); background-size: 16px 16px; opacity: 0.25; }
+  .feature-img .n { position: absolute; top: 24px; left: 24px; font-family: var(--font-mono); font-size: 11px; color: var(--rust-deep); letter-spacing: 0.1em; }
+  .feature-img .g { position: absolute; bottom: 24px; right: 24px; font-family: var(--font-display); font-size: 120px; line-height: 1; color: var(--rust); font-style: italic; }
+  .filters { display: flex; gap: 6px; flex-wrap: wrap; margin: 40px 0 24px; }
+  .filters button { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 8px 14px; border-radius: 999px; color: var(--stone); border: 1px solid var(--line); background: transparent; }
+  .filters button.is-active { background: var(--ink); color: var(--bone); border-color: var(--ink); }
+  .post-list { display: grid; gap: 0; }
+  .post { display: grid; grid-template-columns: 110px 1fr 140px 80px; gap: 24px; padding: 28px 0; border-top: 1px solid var(--line); align-items: baseline; }
+  .post:last-child { border-bottom: 1px solid var(--line); }
+  .post .d { font-family: var(--font-mono); font-size: 11px; color: var(--stone); letter-spacing: 0.08em; }
+  .post .t { font-family: var(--font-display); font-size: 26px; line-height: 1.2; color: var(--ink); font-weight: 400; }
+  .post .c { font-family: var(--font-mono); font-size: 11px; color: var(--rust); letter-spacing: 0.08em; text-transform: uppercase; text-align: right; }
+  .post .r { font-family: var(--font-mono); font-size: 11px; color: var(--stone); text-align: right; }
+  .post:hover .t { color: var(--rust); }
+  @media (max-width: 800px) {
+    .post { grid-template-columns: 1fr; gap: 6px; }
+    .post .c, .post .r { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<div data-site-nav data-active="blog"></div>
+
+<header class="page-header">
+  <div class="container">
+    <span class="eyebrow" data-i18n="blog.eyebrow"></span>
+    <h1 class="h1" data-i18n="blog.headline"></h1>
+    <p class="lede" data-i18n="blog.lede"></p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <div style="margin-bottom: 20px;">
+      <span class="eyebrow" data-i18n="blog.featured"></span>
+    </div>
+    <article class="feature-post">
+      <div>
+        <span class="tag">Product</span>
+        <h2>How SVK migrated 14 years of mating lists in six weeks</h2>
+        <p class="excerpt">A detailed walkthrough of the data archaeology, the edge cases, and the committee decisions that got Svenska Vorstehklubben from fourteen years of spreadsheets to live pedigree data in under two months.</p>
+        <div class="meta">MAR 2026 · 12 min read · Markus Ek</div>
+      </div>
+      <div class="feature-img">
+        <div class="pat"></div>
+        <div class="n">01 / Feature</div>
+        <div class="g">ƒ</div>
+      </div>
+    </article>
+
+    <div>
+      <h3 class="h3" style="margin: 80px 0 0;" data-i18n="blog.all"></h3>
+      <div class="filters">
+        <button class="is-active" data-i18n="blog.filter.all"></button>
+        <button data-i18n="blog.filter.product"></button>
+        <button data-i18n="blog.filter.data"></button>
+        <button data-i18n="blog.filter.field"></button>
+        <button data-i18n="blog.filter.company"></button>
+      </div>
+
+      <div class="post-list">
+        <a class="post" href="#">
+          <span class="d">FEB 28, 2026</span>
+          <span class="t">Why coefficient of inbreeding isn't enough anymore</span>
+          <span class="c">Data</span>
+          <span class="r">8 min</span>
+        </a>
+        <a class="post" href="#">
+          <span class="d">FEB 14, 2026</span>
+          <span class="t">Reading the SKK health registry, properly</span>
+          <span class="c">Data</span>
+          <span class="r">11 min</span>
+        </a>
+        <a class="post" href="#">
+          <span class="d">JAN 30, 2026</span>
+          <span class="t">A day with SVK's breeding committee, in the field and the spreadsheet</span>
+          <span class="c">Field notes</span>
+          <span class="r">9 min</span>
+        </a>
+        <a class="post" href="#">
+          <span class="d">JAN 12, 2026</span>
+          <span class="t">Effective population size: the Ne you should actually be tracking</span>
+          <span class="c">Data</span>
+          <span class="r">14 min</span>
+        </a>
+        <a class="post" href="#">
+          <span class="d">DEC 18, 2025</span>
+          <span class="t">We joined Vendel Seed — and why that makes Insight more stubborn, not less</span>
+          <span class="c">Company</span>
+          <span class="r">4 min</span>
+        </a>
+        <a class="post" href="#">
+          <span class="d">NOV 22, 2025</span>
+          <span class="t">Notes from the Continental pointing-dog championships</span>
+          <span class="c">Field notes</span>
+          <span class="r">6 min</span>
+        </a>
+        <a class="post" href="#">
+          <span class="d">OCT 08, 2025</span>
+          <span class="t">Building a pedigree graph that fits in your pocket</span>
+          <span class="c">Product</span>
+          <span class="r">10 min</span>
+        </a>
+        <a class="post" href="#">
+          <span class="d">SEP 14, 2025</span>
+          <span class="t">What the Riksprov protocol teaches you about data modelling</span>
+          <span class="c">Data</span>
+          <span class="r">13 min</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div data-site-footer></div>
+<script src="scripts/i18n.js?v=1776539022540"></script>
+<script src="scripts/site.js?v=1776539022540"></script>
+</body>
+</html>

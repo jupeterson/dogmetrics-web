@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="clubs.title">For breed clubs — DogMetrics</title>
+<link rel="icon" href="assets/dogmetrics-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Fraunces:opsz,wght@9..144,300..700&family=Cormorant+Garamond:wght@400;500;600&family=Playfair+Display:wght@400;500;600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/tokens.css">
+<link rel="stylesheet" href="styles/site.css">
+<style>
+  .who-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
+  @media (max-width: 900px) { .who-grid { grid-template-columns: 1fr; } }
+  .who-card { padding: 32px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-lg); }
+  .who-card .num { font-family: var(--font-mono); font-size: 11px; color: var(--rust); letter-spacing: 0.12em; margin-bottom: 20px; }
+  .who-card h3 { font-family: var(--font-display); font-size: 28px; font-weight: 400; margin: 0 0 14px; }
+  .who-card p { color: var(--ink-soft); font-size: 15px; margin: 0; }
+  .timeline { display: grid; grid-template-columns: 120px 1fr; gap: 32px; margin-top: 48px; }
+  @media (max-width: 700px) { .timeline { grid-template-columns: 1fr; gap: 8px; } }
+  .tl-row { display: contents; }
+  .tl-row .w { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rust); padding-top: 28px; border-top: 1px solid var(--line); }
+  .tl-row .b { padding: 28px 0; border-top: 1px solid var(--line); }
+  .tl-row:last-child .b, .tl-row:last-child .w { border-bottom: 1px solid var(--line); padding-bottom: 28px; }
+  .tl-row .b h4 { font-family: var(--font-display); font-size: 24px; font-weight: 400; margin: 0 0 8px; }
+  .tl-row .b p { color: var(--ink-soft); margin: 0; max-width: 60ch; }
+  .svk-block { background: var(--ink); color: var(--bone); padding: clamp(72px, 10vw, 140px) 0; }
+  .svk-block .eyebrow { color: var(--tan); }
+  .svk-block h2 { color: var(--bone); margin: 16px 0 24px; }
+  .svk-block .deck { color: rgba(245, 241, 232, 0.75); font-size: 19px; max-width: 58ch; }
+  .svk-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; margin-top: 64px; }
+  @media (max-width: 900px) { .svk-grid { grid-template-columns: 1fr; } }
+  .svk-grid h4 { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--tan); margin: 0 0 14px; font-weight: 500; }
+  .svk-grid p { color: rgba(245, 241, 232, 0.82); margin: 0; font-size: 15px; }
+</style>
+</head>
+<body>
+
+<div data-site-nav data-active="clubs"></div>
+
+<header class="page-header">
+  <div class="container">
+    <span class="eyebrow" data-i18n="clubs.eyebrow"></span>
+    <h1 class="h1" data-i18n="clubs.headline"></h1>
+    <p class="lede" data-i18n="clubs.lede"></p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <div style="max-width: 720px;">
+      <span class="eyebrow" data-i18n="clubs.who.eyebrow"></span>
+      <h2 class="h2" data-i18n="clubs.who.title"></h2>
+    </div>
+    <div class="who-grid">
+      <div class="who-card"><div class="num">01 / Board</div><h3 data-i18n="clubs.who1.title"></h3><p data-i18n="clubs.who1.body"></p></div>
+      <div class="who-card"><div class="num">02 / Breeding committee</div><h3 data-i18n="clubs.who2.title"></h3><p data-i18n="clubs.who2.body"></p></div>
+      <div class="who-card"><div class="num">03 / Members</div><h3 data-i18n="clubs.who3.title"></h3><p data-i18n="clubs.who3.body"></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background: var(--tan-pale);">
+  <div class="container">
+    <div style="max-width: 720px;">
+      <span class="eyebrow" data-i18n="clubs.how.eyebrow"></span>
+      <h2 class="h2" data-i18n="clubs.how.title"></h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-row"><span class="w" data-i18n="clubs.w1"></span><div class="b"><h4 data-i18n="clubs.w1t"></h4><p data-i18n="clubs.w1b"></p></div></div>
+      <div class="tl-row"><span class="w" data-i18n="clubs.w2"></span><div class="b"><h4 data-i18n="clubs.w2t"></h4><p data-i18n="clubs.w2b"></p></div></div>
+      <div class="tl-row"><span class="w" data-i18n="clubs.w3"></span><div class="b"><h4 data-i18n="clubs.w3t"></h4><p data-i18n="clubs.w3b"></p></div></div>
+      <div class="tl-row"><span class="w" data-i18n="clubs.w4"></span><div class="b"><h4 data-i18n="clubs.w4t"></h4><p data-i18n="clubs.w4b"></p></div></div>
+      <div class="tl-row"><span class="w" data-i18n="clubs.w5"></span><div class="b"><h4 data-i18n="clubs.w5t"></h4><p data-i18n="clubs.w5b"></p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="svk-block" id="svk">
+  <div class="container">
+    <span class="eyebrow" data-i18n="clubs.svk.eyebrow"></span>
+    <h2 class="h2" data-i18n="clubs.svk.title"></h2>
+    <p class="deck" data-i18n="clubs.svk.deck"></p>
+    <div class="svk-grid">
+      <div><h4 data-i18n="clubs.svk.challenge"></h4><p data-i18n="clubs.svk.challenge_body"></p></div>
+      <div><h4 data-i18n="clubs.svk.approach"></h4><p data-i18n="clubs.svk.approach_body"></p></div>
+      <div><h4 data-i18n="clubs.svk.outcome"></h4><p data-i18n="clubs.svk.outcome_body"></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container" style="max-width: 720px; text-align: center;">
+    <span class="eyebrow" data-i18n="clubs.pricing.eyebrow"></span>
+    <h2 class="h2" style="margin: 16px 0 20px;" data-i18n="clubs.pricing.title"></h2>
+    <p class="lede" style="margin: 0 auto 32px;" data-i18n="clubs.pricing.body"></p>
+    <a class="btn btn-primary" href="index.html#contact" data-i18n="clubs.pricing.cta"></a>
+  </div>
+</section>
+
+<div data-site-footer></div>
+<script src="scripts/i18n.js?v=1776539022540"></script>
+<script src="scripts/site.js?v=1776539022540"></script>
+</body>
+</html>

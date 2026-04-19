@@ -1,0 +1,187 @@
+/* DogMetrics — design tokens */
+:root {
+  /* Brand core — pulled from logo */
+  --rust: #8C3A1F;
+  --rust-deep: #6B2B15;
+  --rust-soft: #B05636;
+  --tan: #D9C3A0;
+  --tan-soft: #E8D7B8;
+  --tan-pale: #F0E4CC;
+
+  /* Surfaces */
+  --bone: #F5F1E8;
+  --paper: #FAF7F0;
+  --ink: #1A1612;
+  --ink-soft: #3D342C;
+  --stone: #8A8378;
+  --stone-soft: #B5AEA3;
+  --line: rgba(26, 22, 18, 0.12);
+  --line-soft: rgba(26, 22, 18, 0.06);
+
+  /* Data */
+  --sage: #4A5240;
+  --sage-soft: #6B7560;
+
+  /* Type */
+  --font-display: 'Instrument Serif', 'Cormorant Garamond', ui-serif, Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Sizing / spacing */
+  --radius: 4px;
+  --radius-lg: 10px;
+  --container: 1240px;
+  --gutter: clamp(20px, 4vw, 64px);
+
+  /* Shadows — minimal, editorial */
+  --shadow-sm: 0 1px 2px rgba(26, 22, 18, 0.04);
+  --shadow-md: 0 4px 16px rgba(26, 22, 18, 0.06);
+}
+
+/* Dark mode (tweakable) */
+[data-theme="dark"] {
+  --bone: #14110D;
+  --paper: #1C1813;
+  --ink: #F0E8D8;
+  --ink-soft: #C9BFA9;
+  --stone: #8A8378;
+  --stone-soft: #5A534A;
+  --line: rgba(240, 232, 216, 0.12);
+  --line-soft: rgba(240, 232, 216, 0.06);
+  --tan-pale: #2A231A;
+  --tan-soft: #3A2F20;
+}
+
+/* Reset */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--bone);
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "ss01", "cv11";
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+/* Type scale */
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  font-size: clamp(56px, 8vw, 128px);
+}
+.h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  font-size: clamp(44px, 6vw, 88px);
+}
+.h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.005em;
+  font-size: clamp(36px, 4.5vw, 64px);
+}
+.h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.15;
+  font-size: clamp(28px, 3vw, 40px);
+}
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--rust);
+  font-weight: 500;
+}
+.lede {
+  font-size: clamp(18px, 1.6vw, 22px);
+  line-height: 1.5;
+  color: var(--ink-soft);
+  max-width: 60ch;
+}
+.mono {
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum";
+}
+
+/* Layout */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+.section {
+  padding: clamp(80px, 10vw, 160px) 0;
+}
+.section-tight {
+  padding: clamp(56px, 7vw, 96px) 0;
+}
+.divider {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 0;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  transition: transform .15s ease, background .2s ease, color .2s ease;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--ink);
+  color: var(--bone);
+}
+.btn-primary:hover { background: var(--rust); transform: translateY(-1px); }
+.btn-ghost {
+  border-color: var(--line);
+  color: var(--ink);
+}
+.btn-ghost:hover { border-color: var(--ink); }
+.btn-rust {
+  background: var(--rust);
+  color: var(--paper);
+}
+.btn-rust:hover { background: var(--rust-deep); transform: translateY(-1px); }
+
+/* Badges */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--tan-soft);
+  color: var(--rust-deep);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Utility */
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}

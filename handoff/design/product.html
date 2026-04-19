@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="product.title">Product · Insight — DogMetrics</title>
+<link rel="icon" href="assets/dogmetrics-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Fraunces:opsz,wght@9..144,300..700&family=Cormorant+Garamond:wght@400;500;600&family=Playfair+Display:wght@400;500;600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/tokens.css">
+<link rel="stylesheet" href="styles/site.css">
+<style>
+  .product-hero h1 { margin: 20px 0 24px; }
+  .anchors { position: sticky; top: 72px; z-index: 10; background: color-mix(in oklab, var(--bone) 92%, transparent); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  .anchors-inner { display: flex; gap: 4px; padding: 12px 0; overflow-x: auto; }
+  .anchors a { padding: 8px 14px; border-radius: 999px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--stone); white-space: nowrap; }
+  .anchors a:hover { color: var(--rust); background: var(--tan-pale); }
+  .block { padding: clamp(72px, 9vw, 120px) 0; border-bottom: 1px solid var(--line); }
+  .block-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: clamp(32px, 5vw, 80px); align-items: start; }
+  .block-grid.reverse { grid-template-columns: 1.3fr 1fr; }
+  @media (max-width: 900px) { .block-grid, .block-grid.reverse { grid-template-columns: 1fr; } }
+  .block h2 { margin: 16px 0 20px; }
+  .block .lede { margin-bottom: 28px; }
+  .feat-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+  .feat-list li { display: grid; grid-template-columns: 24px 1fr; gap: 14px; align-items: baseline; padding: 14px 0; border-top: 1px solid var(--line-soft); font-size: 15px; color: var(--ink-soft); }
+  .feat-list li::before { content: "↳"; color: var(--rust); font-family: var(--font-mono); font-size: 14px; }
+  .feat-list li strong { color: var(--ink); font-weight: 600; margin-right: 6px; }
+  .illus { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 24px; box-shadow: var(--shadow-sm); min-height: 360px; }
+  .illus-head { display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--stone); padding-bottom: 14px; border-bottom: 1px solid var(--line-soft); margin-bottom: 18px; }
+  .tree { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; font-size: 12px; }
+  .tree .node { padding: 10px 12px; border: 1px solid var(--line); border-radius: 6px; background: var(--bone); font-family: var(--font-mono); color: var(--ink-soft); }
+  .tree .node.self { background: var(--rust); color: var(--paper); border-color: var(--rust); }
+  .tree .node.sire { background: var(--tan-soft); border-color: var(--tan); }
+  .tree .node.dam { background: var(--tan-pale); border-color: var(--tan-soft); }
+  .tree .col { display: grid; gap: 8px; align-content: center; }
+  .rank-row { display: grid; grid-template-columns: 1fr 60px 60px; gap: 10px; align-items: center; padding: 10px 0; border-top: 1px solid var(--line-soft); font-size: 13px; }
+  .rank-row:first-child { border-top: none; }
+  .rank-bar { height: 6px; background: var(--line-soft); border-radius: 3px; overflow: hidden; }
+  .rank-bar span { display:block; height: 100%; background: var(--rust); }
+  .rank-score { font-family: var(--font-mono); text-align: right; color: var(--rust); }
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .stat-box { padding: 16px; background: var(--tan-pale); border-radius: 8px; }
+  .stat-box .n { font-family: var(--font-display); font-size: 32px; line-height: 1; color: var(--rust); }
+  .stat-box .l { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--stone); margin-top: 8px; }
+  .results-list { font-size: 12px; }
+  .results-list .r-row { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; padding: 8px 0; border-top: 1px solid var(--line-soft); font-family: var(--font-mono); }
+  .results-list .r-row:first-child { border-top:none; }
+  .results-list .d { color: var(--stone); }
+  .results-list .n { color: var(--ink); }
+  .results-list .s { color: var(--rust); }
+  .integrations { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 48px; }
+  @media (max-width: 700px) { .integrations { grid-template-columns: repeat(2, 1fr); } }
+  .integ { padding: 20px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); display: flex; flex-direction: column; gap: 8px; }
+  .integ .name { font-family: var(--font-display); font-size: 20px; }
+  .integ .desc { font-size: 12px; color: var(--ink-soft); }
+  .integ .tag { align-self: flex-start; }
+</style>
+</head>
+<body>
+
+<div data-site-nav data-active="product"></div>
+
+<header class="page-header product-hero">
+  <div class="container">
+    <span class="eyebrow" data-i18n="product.eyebrow"></span>
+    <h1 class="h1" data-i18n="product.headline"></h1>
+    <p class="lede" data-i18n="product.lede"></p>
+  </div>
+</header>
+
+<div class="anchors">
+  <div class="container">
+    <div class="anchors-inner">
+      <a href="#pedigree" data-i18n="product.anchor.1"></a>
+      <a href="#matching" data-i18n="product.anchor.2"></a>
+      <a href="#statistics" data-i18n="product.anchor.3"></a>
+      <a href="#lists" data-i18n="product.anchor.4"></a>
+      <a href="#trials" data-i18n="product.anchor.5"></a>
+      <a href="#health" data-i18n="product.anchor.6"></a>
+      <a href="#integrations" data-i18n="product.anchor.7"></a>
+    </div>
+  </div>
+</div>
+
+<section class="block" id="pedigree">
+  <div class="container">
+    <div class="block-grid">
+      <div>
+        <span class="eyebrow" data-i18n="product.s1.eyebrow"></span>
+        <h2 class="h2" data-i18n="product.s1.title"></h2>
+        <p class="lede" data-i18n="product.s1.lede"></p>
+        <ul class="feat-list">
+          <li><span data-i18n="product.s1.f1"></span></li>
+          <li><span data-i18n="product.s1.f2"></span></li>
+          <li><span data-i18n="product.s1.f3"></span></li>
+          <li><span data-i18n="product.s1.f4"></span></li>
+        </ul>
+      </div>
+      <div class="illus">
+        <div class="illus-head"><span>Pedigree · Hedda av Fjället S46782/2022</span><span>5 gen</span></div>
+        <div class="tree">
+          <div class="col"><div class="node self">Hedda av&nbsp;Fjället</div></div>
+          <div class="col">
+            <div class="node sire">♂ Thor vom&nbsp;Waldheim</div>
+            <div class="node dam">♀ Selma av&nbsp;Nordanvind</div>
+          </div>
+          <div class="col">
+            <div class="node">♂ Oskar Dalarna</div>
+            <div class="node">♀ Inga vom Eichhof</div>
+            <div class="node">♂ Bruno Nordanvind</div>
+            <div class="node">♀ Freja av Fjället</div>
+          </div>
+        </div>
+        <div style="margin-top:20px; padding-top:16px; border-top: 1px solid var(--line-soft); display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:11px; color:var(--stone);">
+          <span>COI (5 gen)</span><span style="color:var(--rust); font-weight: 500;">2.4%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="matching">
+  <div class="container">
+    <div class="block-grid reverse">
+      <div class="illus">
+        <div class="illus-head"><span>Matching · Hedda av Fjället</span><span>68 · ranked</span></div>
+        <div>
+          <div class="rank-row"><span>Thor vom Waldheim</span><span class="rank-bar"><span style="width:94%"></span></span><span class="rank-score">94</span></div>
+          <div class="rank-row"><span>Bruno av Nordanvind</span><span class="rank-bar"><span style="width:91%"></span></span><span class="rank-score">91</span></div>
+          <div class="rank-row"><span>Caesar Björnbacken</span><span class="rank-bar"><span style="width:87%"></span></span><span class="rank-score">87</span></div>
+          <div class="rank-row"><span>Igor av Ekskogen</span><span class="rank-bar"><span style="width:84%"></span></span><span class="rank-score">84</span></div>
+          <div class="rank-row"><span>Max Dalarna</span><span class="rank-bar"><span style="width:79%"></span></span><span class="rank-score">79</span></div>
+          <div class="rank-row"><span>Aiko vom Sternhof</span><span class="rank-bar"><span style="width:76%"></span></span><span class="rank-score">76</span></div>
+          <div class="rank-row"><span>Nils av Hedlandet</span><span class="rank-bar"><span style="width:72%"></span></span><span class="rank-score">72</span></div>
+        </div>
+      </div>
+      <div>
+        <span class="eyebrow" data-i18n="product.s2.eyebrow"></span>
+        <h2 class="h2" data-i18n="product.s2.title"></h2>
+        <p class="lede" data-i18n="product.s2.lede"></p>
+        <ul class="feat-list">
+          <li><span data-i18n="product.s2.f1"></span></li>
+          <li><span data-i18n="product.s2.f2"></span></li>
+          <li><span data-i18n="product.s2.f3"></span></li>
+          <li><span data-i18n="product.s2.f4"></span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="statistics">
+  <div class="container">
+    <div class="block-grid">
+      <div>
+        <span class="eyebrow" data-i18n="product.s3.eyebrow"></span>
+        <h2 class="h2" data-i18n="product.s3.title"></h2>
+        <p class="lede" data-i18n="product.s3.lede"></p>
+        <ul class="feat-list">
+          <li><span data-i18n="product.s3.f1"></span></li>
+          <li><span data-i18n="product.s3.f2"></span></li>
+          <li><span data-i18n="product.s3.f3"></span></li>
+          <li><span data-i18n="product.s3.f4"></span></li>
+        </ul>
+      </div>
+      <div class="illus">
+        <div class="illus-head"><span>Breed indicators</span><span>2014–2025</span></div>
+        <div class="stat-grid">
+          <div class="stat-box"><div class="n">2.4%</div><div class="l">Mean COI</div></div>
+          <div class="stat-box"><div class="n">184</div><div class="l">Litters / yr</div></div>
+          <div class="stat-box"><div class="n">Ne 62</div><div class="l">Eff. population</div></div>
+          <div class="stat-box"><div class="n">78%</div><div class="l">HD status A</div></div>
+        </div>
+        <div style="margin-top: 16px; padding: 14px; border: 1px solid var(--line); border-radius: 8px;">
+          <div style="display:flex; justify-content:space-between; margin-bottom: 10px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone);">
+            <span>Inbreeding trend</span><span>-0.3% YoY</span>
+          </div>
+          <svg viewBox="0 0 300 60" preserveAspectRatio="none" style="width:100%; height:60px;">
+            <path d="M0,10 L25,14 L50,12 L75,18 L100,16 L125,22 L150,24 L175,28 L200,30 L225,34 L250,38 L275,42 L300,46" stroke="var(--rust)" stroke-width="1.5" fill="none"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="lists">
+  <div class="container">
+    <div class="block-grid reverse">
+      <div class="illus">
+        <div class="illus-head"><span>Avelslista · Strävhårig Vorsteh</span><span>Live</span></div>
+        <div class="results-list">
+          <div class="r-row"><span class="d">2026-03-14</span><span class="n">Ester av Björkåsen · S44112/2020</span><span class="s">♀</span></div>
+          <div class="r-row"><span class="d">2026-03-11</span><span class="n">Ivan Skogsbackens · S51208/2019</span><span class="s">♂</span></div>
+          <div class="r-row"><span class="d">2026-03-09</span><span class="n">Linda av Ekskogen · S47392/2021</span><span class="s">♀</span></div>
+          <div class="r-row"><span class="d">2026-03-02</span><span class="n">Rex vom Sternhof · S49014/2018</span><span class="s">♂</span></div>
+          <div class="r-row"><span class="d">2026-02-26</span><span class="n">Molly Dalarna · S52701/2022</span><span class="s">♀</span></div>
+          <div class="r-row"><span class="d">2026-02-21</span><span class="n">Conrad Nordanvind · S48321/2019</span><span class="s">♂</span></div>
+        </div>
+      </div>
+      <div>
+        <span class="eyebrow" data-i18n="product.s4.eyebrow"></span>
+        <h2 class="h2" data-i18n="product.s4.title"></h2>
+        <p class="lede" data-i18n="product.s4.lede"></p>
+        <ul class="feat-list">
+          <li><span data-i18n="product.s4.f1"></span></li>
+          <li><span data-i18n="product.s4.f2"></span></li>
+          <li><span data-i18n="product.s4.f3"></span></li>
+          <li><span data-i18n="product.s4.f4"></span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="trials">
+  <div class="container">
+    <div class="block-grid">
+      <div>
+        <span class="eyebrow" data-i18n="product.s5.eyebrow"></span>
+        <h2 class="h2" data-i18n="product.s5.title"></h2>
+        <p class="lede" data-i18n="product.s5.lede"></p>
+        <ul class="feat-list">
+          <li><span data-i18n="product.s5.f1"></span></li>
+          <li><span data-i18n="product.s5.f2"></span></li>
+          <li><span data-i18n="product.s5.f3"></span></li>
+          <li><span data-i18n="product.s5.f4"></span></li>
+        </ul>
+      </div>
+      <div class="illus">
+        <div class="illus-head"><span>Results · Hedda av Fjället</span><span>17</span></div>
+        <div class="results-list">
+          <div class="r-row"><span class="d">2025-10-12</span><span class="n">EKL · Fält · Jämtland</span><span class="s">1:a pris</span></div>
+          <div class="r-row"><span class="d">2025-08-28</span><span class="n">Utställning · Sundsvall</span><span class="s">Excellent</span></div>
+          <div class="r-row"><span class="d">2025-06-04</span><span class="n">Working test · Apport</span><span class="s">Approved</span></div>
+          <div class="r-row"><span class="d">2024-11-09</span><span class="n">UKL · Skog · Värmland</span><span class="s">2:a pris</span></div>
+          <div class="r-row"><span class="d">2024-09-15</span><span class="n">Riksprovet · UKL</span><span class="s">Approved</span></div>
+          <div class="r-row"><span class="d">2024-07-22</span><span class="n">HD-röntgen</span><span class="s">A</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="health">
+  <div class="container">
+    <div class="block-grid reverse">
+      <div class="illus">
+        <div class="illus-head"><span>Health · breed-wide</span><span>SKK synced</span></div>
+        <div class="stat-grid">
+          <div class="stat-box" style="background: #E6EFDC"><div class="n" style="color:var(--sage)">78%</div><div class="l">HD · A</div></div>
+          <div class="stat-box" style="background:#F0E4CC"><div class="n" style="color:var(--rust-soft)">16%</div><div class="l">HD · B</div></div>
+          <div class="stat-box" style="background: #F0DED0"><div class="n" style="color:var(--rust-deep)">5%</div><div class="l">HD · C</div></div>
+          <div class="stat-box" style="background: #EFDAD2"><div class="n" style="color:var(--rust-deep)">1%</div><div class="l">HD · D/E</div></div>
+        </div>
+      </div>
+      <div>
+        <span class="eyebrow" data-i18n="product.s6.eyebrow"></span>
+        <h2 class="h2" data-i18n="product.s6.title"></h2>
+        <p class="lede" data-i18n="product.s6.lede"></p>
+        <ul class="feat-list">
+          <li><span data-i18n="product.s6.f1"></span></li>
+          <li><span data-i18n="product.s6.f2"></span></li>
+          <li><span data-i18n="product.s6.f3"></span></li>
+          <li><span data-i18n="product.s6.f4"></span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="integrations">
+  <div class="container">
+    <div style="max-width: 680px;">
+      <span class="eyebrow" data-i18n="product.s7.eyebrow"></span>
+      <h2 class="h2" data-i18n="product.s7.title"></h2>
+      <p class="lede" data-i18n="product.s7.lede"></p>
+    </div>
+    <div class="integrations">
+      <div class="integ"><span class="tag" data-i18n="product.tag.live"></span><span class="name" data-i18n="product.i1.name"></span><span class="desc" data-i18n="product.i1.desc"></span></div>
+      <div class="integ"><span class="tag" data-i18n="product.tag.live"></span><span class="name" data-i18n="product.i2.name"></span><span class="desc" data-i18n="product.i2.desc"></span></div>
+      <div class="integ"><span class="tag" style="background: var(--tan-soft); color: var(--rust-deep)" data-i18n="product.tag.import"></span><span class="name" data-i18n="product.i3.name"></span><span class="desc" data-i18n="product.i3.desc"></span></div>
+      <div class="integ"><span class="tag" style="background: var(--tan-soft); color: var(--rust-deep)" data-i18n="product.tag.export"></span><span class="name" data-i18n="product.i4.name"></span><span class="desc" data-i18n="product.i4.desc"></span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background: var(--tan-pale);">
+  <div class="container" style="text-align: center;">
+    <h2 class="h1" style="max-width: 18ch; margin: 0 auto 24px;" data-i18n="product.cta.title"></h2>
+    <p class="lede" style="margin: 0 auto 32px;" data-i18n="product.cta.lede"></p>
+    <a class="btn btn-primary" href="index.html#contact" data-i18n="nav.demo"></a>
+  </div>
+</section>
+
+<div data-site-footer></div>
+<script src="scripts/i18n.js?v=1776539022540"></script>
+<script src="scripts/site.js?v=1776539022540"></script>
+</body>
+</html>
